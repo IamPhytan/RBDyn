@@ -7,3 +7,6 @@ CMakeLists.txt.user*
 build*
 compile_commands.json
 result
+# pixi environments
+.pixi/*
+!.pixi/config.toml

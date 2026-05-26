@@ -1,0 +1,32 @@
+[workspace]
+authors = ["Damien LaRocque <damien.larocque@sereact.ai>"]
+channels = ["conda-forge"]
+name = "RBDyn"
+platforms = ["linux-64"]
+preview = ["pixi-build"]
+
+[tasks]
+
+[dependencies]
+rbdyn = { path = "." }
+
+[package.host-dependencies]
+SpaceVecAlg = { git = "https://github.com/IamPhytan/SpaceVecAlg.git", branch = "pixi" }
+yaml-cpp = ">=0.8.0,<0.9"
+tinyxml2 = ">=11.0.0,<12"
+doxygen = ">=1.13.2,<2"
+boost = ">=1.85.0,<2"
+
+[package]
+name = "rbdyn"
+version = "0.1.0"
+
+[package.build]
+backend = { name = "pixi-build-cmake", version = "0.*" }
+
+[package.build.config]
+extra-args = [
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DPYTHON_BINDING=OFF",
+    "-DBUILD_TESTING=OFF",
+]
